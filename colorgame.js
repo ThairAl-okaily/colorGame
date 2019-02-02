@@ -6,7 +6,22 @@ const squares = document.querySelectorAll(".square");
 const colorDisplay = document.getElementById("colorDisplay");
 const messageDisplay = document.getElementById("message");
 const h1 = document.querySelector("h1");
+const restetButton = document.getElementById("reset");
 let pickedColor = pickcolor();
+
+restetButton.addEventListener("click", function () {
+    // generate new colores 
+    colors = generatColors(6);
+
+    pickedColor = pickcolor();
+    colorDisplay.textContent = pickedColor;
+
+    for (let i = 0; i < squares.length; i++){
+        //add init colors 
+        squares[i].style.backgroundColor = colors[i];
+    }
+    h1.style.background = "#232323";
+});
 
 colorDisplay.textContent = pickedColor;
 
@@ -22,6 +37,7 @@ for (let i = 0; i < squares.length; i++){
         messageDisplay.textContent="correct";
         changColors(pickedColor);
         h1.style.backgroundColor = pickedColor;
+        restetButton.textContent= "Play again ?";
        
         }
         else {
